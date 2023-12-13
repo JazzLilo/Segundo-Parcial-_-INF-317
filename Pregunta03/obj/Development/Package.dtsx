@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/13/2023 2:49:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-JHAFF9G"
+  DTS:CreatorName="DESKTOP-JHAFF9G\Michi"
+  DTS:DTSID="{B4C4430E-8546-4A7A-A56E-2E9084B0D253}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5314.0"
+  DTS:LocaleID="16394"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{2CCEF314-745D-49EE-BB7A-05ED61A62DDE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local)]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DE73009C-5A51-4EF4-ACD2-00676220943B}"
+      DTS:ObjectName="(local)">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{DE73009C-5A51-4EF4-ACD2-00676220943B}(local);Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local) 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{02BC1F37-6321-4188-A895-6B6E2FB11DB3}"
+      DTS:ObjectName="(local) 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{02BC1F37-6321-4188-A895-6B6E2FB11DB3}(local) 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).AdventureWorks2022]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FF686397-6707-4173-BC87-1E7D17136BBD}"
+      DTS:ObjectName="(local).AdventureWorks2022">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=AdventureWorks2022;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{FF686397-6707-4173-BC87-1E7D17136BBD}(local).AdventureWorks2022;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ActualizarRegistros"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{1B4AF158-F11D-40EB-A447-5469359ADFC2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ActualizarRegistros"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FF686397-6707-4173-BC87-1E7D17136BBD}"
+          SQLTask:SqlStatementSource="UPDATE td &#xA;SET&#xA;    GroupName = d.GroupName,&#xA;    ModifiedDate = d.ModifiedDate,&#xA;    Name = d.Name&#xA;FROM Trabajos.dbo.Departamentos td&#xA;INNER JOIN HumanResources.Department d &#xA;ON td.DepartmentID = d.DepartmentID &#xA;WHERE td.GroupName &lt;&gt; d.GroupName OR td.ModifiedDate &lt;&gt; d.ModifiedDate OR td.Name &lt;&gt; d.Name;&#xA;&#xA;&#xA;UPDATE tc &#xA;SET&#xA;    Name = c.Name,&#xA;    ModifiedDate = c.ModifiedDate&#xA;FROM Trabajos.dbo.Cultura tc&#xA;INNER JOIN Production.Culture c&#xA;ON tc.CultureID = c.CultureID&#xA;WHERE tc.Name &lt;&gt; c.Name OR tc.ModifiedDate &lt;&gt; c.ModifiedDate;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ActualizarRegistros2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{9239CBBD-55C2-47DE-947A-167875FEAC13}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ActualizarRegistros2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FF686397-6707-4173-BC87-1E7D17136BBD}"
+          SQLTask:SqlStatementSource="UPDATE td &#xA;SET&#xA;    GroupName = d.GroupName,&#xA;    ModifiedDate = d.ModifiedDate,&#xA;    Name = d.Name&#xA;FROM Trabajos.dbo.Departamentos td&#xA;INNER JOIN HumanResources.Department d &#xA;ON td.DepartmentID = d.DepartmentID &#xA;WHERE td.GroupName &lt;&gt; d.GroupName OR td.ModifiedDate &lt;&gt; d.ModifiedDate OR td.Name &lt;&gt; d.Name;&#xA;&#xA;&#xA;UPDATE tc &#xA;SET&#xA;    Name = c.Name,&#xA;    ModifiedDate = c.ModifiedDate&#xA;FROM Trabajos.dbo.Cultura tc&#xA;INNER JOIN Production.Culture c&#xA;ON tc.CultureID = c.CultureID&#xA;WHERE tc.Name &lt;&gt; c.Name OR tc.ModifiedDate &lt;&gt; c.ModifiedDate;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\crearTablas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{730222D7-07FE-43C8-A434-98B805C98F5B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="crearTablas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FF686397-6707-4173-BC87-1E7D17136BBD}"
+          SQLTask:SqlStatementSource="if exists (SELECT 1 FROM sys.databases WHERE name = 'Trabajos' )&#xA;begin&#xA;  SELECT *&#xA;  INTO Trabajos.dbo.Departamentos&#xA;  FROM HumanResources.Department;&#xA;&#xA;  SELECT *&#xA;  INTO Trabajos.dbo.Cultura&#xA;  FROM Production.Culture;&#xA;end" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ReplicaFalla"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{7CDE6202-0BA1-4DB8-B991-1C5BA14E8039}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ReplicaFalla"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FF686397-6707-4173-BC87-1E7D17136BBD}"
+          SQLTask:SqlStatementSource="SET IDENTITY_INSERT Trabajos.dbo.Departamentos ON;&#xA;insert into Trabajos.dbo.Departamentos (DepartmentID,Name,GroupName,ModifiedDate)&#xA;select DepartmentID,Name,GroupName,ModifiedDate &#xA;FROM HumanResources.Department&#xA;WHERE DepartmentID NOT IN (SELECT DepartmentID FROM Trabajos.dbo.Departamentos);&#xA;SET IDENTITY_INSERT Trabajos.dbo.Departamentos Off;&#xA;&#xA;&#xA;&#xA;insert into Trabajos.dbo.Cultura ( CultureID,Name,ModifiedDate)&#xA;select CultureID,Name,ModifiedDate&#xA;FROM Production.Culture&#xA;WHERE CultureID NOT IN (SELECT CultureID FROM Trabajos.dbo.Cultura );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ReplicaValores"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{35E17FAD-ED0C-4D6C-95F8-0FC45AAC3AB1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ReplicaValores"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FF686397-6707-4173-BC87-1E7D17136BBD}"
+          SQLTask:SqlStatementSource="SET IDENTITY_INSERT Trabajos.dbo.Departamentos ON;&#xA;insert into Trabajos.dbo.Departamentos (DepartmentID,Name,GroupName,ModifiedDate)&#xA;select DepartmentID,Name,GroupName,ModifiedDate &#xA;FROM HumanResources.Department&#xA;WHERE DepartmentID NOT IN (SELECT DepartmentID FROM Trabajos.dbo.Departamentos);&#xA;SET IDENTITY_INSERT Trabajos.dbo.Departamentos Off;&#xA;&#xA;&#xA;&#xA;insert into Trabajos.dbo.Cultura ( CultureID,Name,ModifiedDate)&#xA;select CultureID,Name,ModifiedDate&#xA;FROM Production.Culture&#xA;WHERE CultureID NOT IN (SELECT CultureID FROM Trabajos.dbo.Cultura );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\VerificarBaseDatos"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{15073D69-6F65-49A2-9B19-B74DE9072D8D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="VerificarBaseDatos"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DE73009C-5A51-4EF4-ACD2-00676220943B}"
+          SQLTask:SqlStatementSource="if not exists (SELECT 1 FROM sys.databases WHERE name = 'Trabajos')&#xA;begin&#xA;  create database Trabajos;&#xA;end&#xA;go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{ED52CA4A-C373-415B-A4BD-B6F5F966898C}"
+      DTS:From="Package\VerificarBaseDatos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\crearTablas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A7846B7F-4EC6-45AB-BCB6-67DF52589A8E}"
+      DTS:From="Package\crearTablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\ReplicaValores" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{F254723D-380B-498F-BA4E-8CC3C28A2DC2}"
+      DTS:From="Package\crearTablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\ReplicaFalla"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{CAE837D8-EAFD-40FB-9C70-B78B509C2ACD}"
+      DTS:From="Package\ReplicaValores"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\ActualizarRegistros" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{3ED81070-E36C-4B62-B08D-924A72EC331A}"
+      DTS:From="Package\ReplicaFalla"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\ActualizarRegistros2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\VerificarBaseDatos"
+          TopLeft="43.8095239027828,163.774509660367" />
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\crearTablas"
+          TopLeft="257.294372842084,162.673796648854" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="210.209523902783,184.02415315461">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.0848489393016,0"
+              Start="0,0"
+              End="39.5848489393016,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="39.5848489393016,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\ReplicaValores"
+          TopLeft="486.727273588444,120.962566738891" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\ReplicaFalla"
+          TopLeft="487.03896204942,225.240641513798" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="390.094372842084,177.873796648854">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96.6329007463594,-36.1112299099625"
+              Start="0,0"
+              End="89.1329007463594,-36.1112299099625">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.8005580929073,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.8005580929073,0"
+                    Point2="40.8005580929073,0"
+                    Point3="40.8005580929073,-4" />
+                  <mssgle:LineSegment
+                    End="40.8005580929073,-32.1112299099625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.8005580929073,-32.1112299099625"
+                    Point2="40.8005580929073,-36.1112299099625"
+                    Point3="44.8005580929073,-36.1112299099625" />
+                  <mssgle:LineSegment
+                    End="89.1329007463594,-36.1112299099625" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="390.094372842084,183.473796648854">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96.9445892073358,62.5668448649438"
+              Start="0,0"
+              End="89.4445892073358,62.5668448649438">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44.4722946036679,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.4722946036679,0"
+                    Point2="48.4722946036679,0"
+                    Point3="48.4722946036679,4" />
+                  <mssgle:LineSegment
+                    End="48.4722946036679,58.5668448649438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.4722946036679,58.5668448649438"
+                    Point2="48.4722946036679,62.5668448649438"
+                    Point3="52.4722946036679,62.5668448649438" />
+                  <mssgle:LineSegment
+                    End="89.4445892073358,62.5668448649438" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="36.9436031974179,-15.421875,23.0573828125,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\ActualizarRegistros"
+          TopLeft="678.389611669618,124.438502564722" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\ActualizarRegistros2"
+          TopLeft="668.077923179613,232.192513165458" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="633.127273588444,143.500534651807">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.2623380811739,0"
+              Start="0,0"
+              End="37.7623380811739,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.7623380811739,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="620.63896204942,249.516577339628">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.4389611301926,0"
+              Start="0,0"
+              End="39.9389611301926,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="39.9389611301926,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
